@@ -68,6 +68,13 @@ namespace PlayerManager4 // >>> Change to PlayerManager2 for exercise 4 <<< //
                     case "4":
                         Console.WriteLine("Bye!");
                         break;
+                    case "5":
+                        ListPlayers(_playerList, new CompareByName(true)); 
+                        break;
+                    case "6":
+                        ListPlayers(_playerList, new CompareByName(false));
+                        break;
+
                     default:
                         Console.Error.WriteLine("\n>>> Unknown option! <<<\n");
                         break;
@@ -93,7 +100,9 @@ namespace PlayerManager4 // >>> Change to PlayerManager2 for exercise 4 <<< //
             Console.WriteLine("2. List all players");
             Console.WriteLine("3. List players with score greater than...");
             Console.WriteLine("4. Quit");
-            Console.Write("Choose an option (1-4): ");
+            Console.WriteLine("5. List players ordered by name (A-Z)");
+            Console.WriteLine("6. List players ordered by name (Z-A)");
+            Console.Write("Choose an option (1-6): ");
         }
 
         /// <summary>
@@ -131,13 +140,17 @@ namespace PlayerManager4 // >>> Change to PlayerManager2 for exercise 4 <<< //
         /// <param name="playersToList">
         /// An enumerable object of players to show.
         /// </param>
-        private static void ListPlayers(IEnumerable<Player> playersToList)
+        private static void ListPlayers(IEnumerable<Player> playersToList, IComparer<Player> comparer = null)
         {
             Console.WriteLine("Listing players:");
             Console.WriteLine("----------------");
 
             List<Player> sortedList = new List<Player>(playersToList);
-            sortedList.Sort();
+
+            if (comparer != null)
+                sortedList.Sort(comparer);
+            else
+                sortedList.Sort(); // usa CompareTo (por Score desc.)
 
             foreach (Player player in sortedList)
             {
