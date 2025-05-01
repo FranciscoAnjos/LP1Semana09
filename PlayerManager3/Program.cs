@@ -135,8 +135,11 @@ namespace PlayerManager3 // >>> Change to PlayerManager2 for exercise 4 <<< //
         {
             Console.WriteLine("Listing players:");
             Console.WriteLine("----------------");
-            
-            foreach (Player player in playersToList)
+
+            List<Player> sortedList = new List<Player>(playersToList);
+            sortedList.Sort();
+
+            foreach (Player player in sortedList)
             {
                 Console.WriteLine($"{player.Name}, score: {player.Score}");
             }
