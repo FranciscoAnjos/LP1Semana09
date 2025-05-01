@@ -133,9 +133,13 @@ namespace PlayerManager1 // >>> Change to PlayerManager2 for exercise 4 <<< //
         /// </param>
         private static void ListPlayers(IEnumerable<Player> playersToList)
         {
-            // /////////////////// //
-            // COMPLETE ME PLEASE! //
-            // /////////////////// //
+            Console.WriteLine("Listing players:");
+            Console.WriteLine("----------------");
+            
+            foreach (Player player in playersToList)
+            {
+                Console.WriteLine($"{player.Name}, score: {player.Score}");
+            }
         }
 
         /// <summary>
