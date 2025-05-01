@@ -1,12 +1,13 @@
 ﻿namespace AnimalKingdom
 {
-    public class Bat: Animal
+    public class Bat: Animal, IMammal, ICanFly
     {
         public int NumberOfNipples => 2;
+        public int NumberOfWings => 2;
         
         public override string Sound()
         {
-            return base.Sound() + "ti ti ti";
+            return base.Sound() + "Ti ti ti";
         }
     }
 }
